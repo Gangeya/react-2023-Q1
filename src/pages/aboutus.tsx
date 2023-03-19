@@ -1,10 +1,9 @@
 import React from 'react';
 
-export function About() {
-  return (
-    <div>
-      <h1>About Us</h1>
-      <p>Eugene Mikhalionok, Minsk</p>
-    </div>
-  )
+export class About extends React.Component {
+  render() {
+    return (
+      <h1>Home Page</h1>
+    )
+  }
 }

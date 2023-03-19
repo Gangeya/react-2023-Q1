@@ -1,9 +1,12 @@
 import React from 'react';
 
-export function Home() {
-  return (
-    <div>
-      <h1>Home</h1>
-    </div>
-  )
+export class Home extends React.Component {
+  constructor(props: object) {
+    super(props);
+  }
+  render() {
+    return (
+      <h1>Home Page</h1>
+    )
+  }
 }
