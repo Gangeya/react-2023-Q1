@@ -13,7 +13,7 @@ export class Home extends React.Component {
         <Search />
         <div className="container">
           {
-            products.map(product => <Product {...product} />)
+            products.map(product => <Product {...product} key={product.id} />)
           }
           {/* <Product product={products[0]} />
           <Product {...products[1]} />

@@ -1,18 +1,51 @@
 import React from 'react';
 
 interface ISearch { };
-interface ISearchState { };
+interface ISearchState {
+  inputSearchValue: string;
+};
 
 export class Search extends React.Component<ISearch, ISearchState> {
   constructor(props: ISearch) {
     super(props);
+    this.state = {
+      inputSearchValue: localStorage.getItem('key-inputSearchValue') || '',
+    }
   }
+
+  handleSearch(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
+
+  componentDidMount() {
+    localStorage.setItem('key-inputSearchValue', this.state.inputSearchValue);
+  }
+
+  componentWillUnmount() {
+    localStorage.setItem('key-inputSearchValue', this.state.inputSearchValue);
+  }
+
+  changeSearch(e: React.ChangeEvent<HTMLInputElement>) {
+    this.setState({
+      inputSearchValue: e.target.value
+    })
+    console.log(this.state.inputSearchValue)
+  }
+
   render() {
     return (
       <div className="search">
-        <form className="search-form">
+        <form className="search-form" onSubmit={(e) => this.handleSearch(e)}>
           <div className="search-wrap">
-            <input className="search-input" type="search" name="search" id="search" />
+            <input
+              className="search-input"
+              type="search"
+              placeholder="Search..."
+              name="search"
+              value={this.state.inputSearchValue}
+              id="search"
+              onChange={(e) => this.changeSearch(e)}
+            />
             <button className="search-btn" type="submit">Search</button>
           </div>
         </form>
