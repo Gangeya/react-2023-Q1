@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it } from 'vitest';
-import { getByTestId, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import { products } from '../data';
 import { Product } from './Product';
