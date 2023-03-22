@@ -8,7 +8,6 @@ import { Page404 } from './pages/404';
 import './App.css';
 
 function App() {
-
   return (
     <div className="App">
       <header>

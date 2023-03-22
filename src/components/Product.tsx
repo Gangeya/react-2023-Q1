@@ -1,5 +1,5 @@
 import React from 'react';
-import { TProduct } from '../types'
+import { TProduct } from '../types';
 
 export class Product extends React.Component<TProduct> {
   constructor(props: TProduct) {
@@ -15,6 +15,6 @@ export class Product extends React.Component<TProduct> {
         <p>Rate: {this.props.rating.rate}</p>
         <p>Count: {this.props.rating.count}</p>
       </div>
-    )
+    );
   }
 }

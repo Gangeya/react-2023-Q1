@@ -8,5 +8,5 @@ export type TProduct = {
   rating: {
     rate: number;
     count: number;
-  }
-}
+  };
+};

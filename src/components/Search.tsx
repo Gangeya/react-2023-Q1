@@ -1,16 +1,15 @@
 import React from 'react';
 
-interface ISearch { };
 interface ISearchState {
   inputSearchValue: string;
-};
+}
 
-export class Search extends React.Component<ISearch, ISearchState> {
-  constructor(props: ISearch) {
+export class Search extends React.Component<Record<string, never>, ISearchState> {
+  constructor(props: never) {
     super(props);
     this.state = {
       inputSearchValue: localStorage.getItem('key-inputSearchValue') || '',
-    }
+    };
   }
 
   handleSearch(e: React.FormEvent<HTMLFormElement>) {
@@ -27,9 +26,9 @@ export class Search extends React.Component<ISearch, ISearchState> {
 
   changeSearch(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
-      inputSearchValue: e.target.value
-    })
-    console.log(this.state.inputSearchValue)
+      inputSearchValue: e.target.value,
+    });
+    console.log(this.state.inputSearchValue);
   }
 
   render() {
@@ -46,10 +45,12 @@ export class Search extends React.Component<ISearch, ISearchState> {
               id="search"
               onChange={(e) => this.changeSearch(e)}
             />
-            <button className="search-btn" type="submit">Search</button>
+            <button className="search-btn" type="submit">
+              Search
+            </button>
           </div>
         </form>
       </div>
-    )
+    );
   }
 }

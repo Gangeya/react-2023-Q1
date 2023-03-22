@@ -8,6 +8,6 @@ export class Page404 extends React.Component {
         <h1>Not found page</h1>
         <Link to="/">Go Home</Link>
       </div>
-    )
+    );
   }
 }
