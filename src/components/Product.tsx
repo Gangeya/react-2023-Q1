@@ -9,7 +9,7 @@ export class Product extends React.Component<TProduct> {
     return (
       <div className="product">
         <p>{this.props.title}</p>
-        <img src={this.props.image} alt={this.props.title} />
+        <img data-testid="img-id" src={this.props.image} alt={this.props.title} />
         <p>{this.props.category}</p>
         <p>Price: {this.props.price}</p>
         <p>Rate: {this.props.rating.rate}</p>
