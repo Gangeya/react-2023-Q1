@@ -13,17 +13,16 @@ export class InputCheckBox extends React.Component<Record<string, unknown>, TChe
       error: ''
     }
   }
-  setChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({
-      isValid: !this.state.isValid,
-    });
-  }
 
   checkCheckBox(value: boolean) {
+    console.log(value);
     if (!value) {
       this.setState({
+        isValid: false,
         error: 'Please set checked!'
       })
+    } else {
+      this.setState({ isValid: true })
     }
   }
   render() {
@@ -32,8 +31,7 @@ export class InputCheckBox extends React.Component<Record<string, unknown>, TChe
         <label>
           <input
             type="checkbox"
-            checked={this.state.isValid}
-            onChange={this.setChecked}
+
             ref={this.checkInput} />
           I agree to the processing of personal data
         </label>

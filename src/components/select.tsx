@@ -17,16 +17,12 @@ export class Select extends React.Component<Record<string, unknown>, TSelectStat
     }
   }
 
-  setSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    this.setState({ value: e.target.value });
-  }
-
   checkSelect(value: string): void {
     const selectValue = value.trim();
+    console.log(value);
 
     if (selectValue) {
       this.setState({
-        value: selectValue,
         isValid: true,
       });
     } else {
@@ -44,8 +40,6 @@ export class Select extends React.Component<Record<string, unknown>, TSelectStat
           Selct Coutry:
           <select
             ref={this.select}
-            value={this.state.value}
-            onChange={this.setSelect}
             className="select">
             <option value=""></option>
             <option value="Belarus">Belarus</option>
