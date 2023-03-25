@@ -24,7 +24,6 @@ export type TCheckBoxState = {
 
 export type TDateInputState = {
   isValid: boolean;
-  dateValue: string;
   error: string;
 };
 

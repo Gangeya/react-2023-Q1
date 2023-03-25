@@ -7,15 +7,14 @@ export class InputDate extends React.Component<Record<string, unknown>, TDateInp
   constructor(props: never) {
     super(props);
     this.dateInput = React.createRef();
-
     this.state = {
-      isValid: true,
-      dateValue: new Date().toISOString().slice(0, 10),
+      isValid: false,
       error: '',
     };
   }
 
   checkDate = (value: string) => {
+    console.log(value);
     const date = new Date(value);
     const currentDate = new Date();
     const fullYears = currentDate.getFullYear() - date.getFullYear()
@@ -40,24 +39,14 @@ export class InputDate extends React.Component<Record<string, unknown>, TDateInp
     }
   }
 
-  setDate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ dateValue: e.target.value });
-  }
-
   render() {
-
-
     return (
       <div>
         <p>Select date of birth</p>
         <input
           type="date"
           ref={this.dateInput}
-          value={this.state.dateValue}
-          onChange={this.setDate}
         />
-        <hr />
-        {this.state.dateValue}
         {!this.state.isValid && <CustomError message={this.state.error} />}
       </div>
     )
