@@ -2,11 +2,13 @@ import React, { RefObject } from 'react';
 import { InputDate } from '../components/InputDate';
 import { TextInput } from '../components/TextItput';
 import { Select } from '../components/select';
+import { InputCheckBox } from '../components/InputCheckBox';
 
 export class FormCreateCard extends React.Component {
   inputName: RefObject<TextInput>;
   inputDate: RefObject<InputDate>;
   inputSelect: RefObject<Select>;
+  inputCheckBox: RefObject<InputCheckBox>;
 
   constructor(props: never) {
     super(props);
@@ -19,6 +21,7 @@ export class FormCreateCard extends React.Component {
     this.inputName = React.createRef();
     this.inputDate = React.createRef();
     this.inputSelect = React.createRef();
+    this.inputCheckBox = React.createRef();
     this.checkForm = this.checkForm.bind(this);
   }
 
@@ -31,6 +34,9 @@ export class FormCreateCard extends React.Component {
 
     const select = this.inputSelect.current!.select.current!.value;
     this.inputSelect.current?.checkSelect(select);
+
+    const checkBox = this.inputCheckBox.current!.checkInput.current!.checked;
+    this.inputCheckBox.current?.checkCheckBox(checkBox);
   }
   render() {
     return (
@@ -41,6 +47,7 @@ export class FormCreateCard extends React.Component {
             <TextInput ref={this.inputName} />
             <InputDate ref={this.inputDate} />
             <Select ref={this.inputSelect} />
+            <InputCheckBox ref={this.inputCheckBox} />
             <input type="button" value="Submit" onClick={this.checkForm} />
           </div>
         </form>

@@ -17,6 +17,11 @@ export type TTextInputState = {
   error: string;
 };
 
+export type TCheckBoxState = {
+  isValid: boolean;
+  error: string;
+};
+
 export type TDateInputState = {
   isValid: boolean;
   dateValue: string;
