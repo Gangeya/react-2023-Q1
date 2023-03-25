@@ -10,3 +10,15 @@ export type TProduct = {
     count: number;
   };
 };
+
+
+export type TTextInputState = {
+  isValid: boolean;
+  error: string;
+};
+
+export type TDateInputState = {
+  isValid: boolean;
+  dateValue: string;
+  error: string;
+};
