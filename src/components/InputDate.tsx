@@ -18,13 +18,7 @@ export class InputDate extends React.Component<Record<string, unknown>, TDateInp
   checkDate = (value: string) => {
     const date = new Date(value);
     const currentDate = new Date();
-    console.log('Current date: ' + currentDate);
-    console.log('Selected date: ' + date);
-
     const fullYears = currentDate.getFullYear() - date.getFullYear()
-    console.log(`Full years: ${fullYears}`);
-
-
 
     if (date > currentDate) {
       this.setState({

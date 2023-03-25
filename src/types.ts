@@ -22,3 +22,9 @@ export type TDateInputState = {
   dateValue: string;
   error: string;
 };
+
+export type TSelectState = {
+  isValid: boolean;
+  value: string;
+  error: string;
+}

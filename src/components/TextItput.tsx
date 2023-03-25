@@ -16,7 +16,6 @@ export class TextInput extends React.Component<Record<string, unknown>, TTextInp
   }
 
   checkName = (value: string) => {
-    console.log('Name: ' + value);
     if (!value) {
       this.setState({
         isValid: false,
