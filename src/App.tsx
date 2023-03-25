@@ -3,6 +3,7 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 
 import { Home } from './pages/home';
 import { About } from './pages/aboutus';
+import { FormCreateCard } from './pages/createcard';
 import { Page404 } from './pages/404';
 
 import './App.css';
@@ -13,10 +14,12 @@ function App() {
       <header>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">About Us</NavLink>
+        <NavLink to="/createcard">Create Card</NavLink>
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/createcard" element={<FormCreateCard />} />
         <Route path="/*" element={<Page404 />} />
       </Routes>
     </div>

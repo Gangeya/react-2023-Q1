@@ -13,9 +13,6 @@ export class Home extends React.Component {
           {products.map((product) => (
             <Product {...product} key={product.id} />
           ))}
-          {/* <Product product={products[0]} />
-          <Product {...products[1]} />
-          <Product {...products[2]} /> */}
         </div>
       </>
     );
