@@ -3,12 +3,14 @@ import { InputDate } from '../components/InputDate';
 import { TextInput } from '../components/TextItput';
 import { Select } from '../components/select';
 import { InputCheckBox } from '../components/InputCheckBox';
+import { InputRadio } from '../components/InputRadio';
 
 export class FormCreateCard extends React.Component {
   inputName: RefObject<TextInput>;
   inputDate: RefObject<InputDate>;
   inputSelect: RefObject<Select>;
   inputCheckBox: RefObject<InputCheckBox>;
+  inputRadio: RefObject<InputRadio>;
 
   constructor(props: never) {
     super(props);
@@ -22,6 +24,7 @@ export class FormCreateCard extends React.Component {
     this.inputDate = React.createRef();
     this.inputSelect = React.createRef();
     this.inputCheckBox = React.createRef();
+    this.inputRadio = React.createRef();
     this.checkForm = this.checkForm.bind(this);
   }
 
@@ -37,6 +40,10 @@ export class FormCreateCard extends React.Component {
 
     const checkBox = this.inputCheckBox.current!.checkInput.current!.checked;
     this.inputCheckBox.current?.checkCheckBox(checkBox);
+
+    const radio1 = this.inputRadio.current?.radio1.current;
+    const radio2 = this.inputRadio.current?.radio2.current;
+    this.inputRadio.current?.checkRadio([radio1, radio2]);
   }
   render() {
     return (
@@ -48,6 +55,7 @@ export class FormCreateCard extends React.Component {
             <InputDate ref={this.inputDate} />
             <Select ref={this.inputSelect} />
             <InputCheckBox ref={this.inputCheckBox} />
+            <InputRadio ref={this.inputRadio} />
             <input type="button" value="Submit" onClick={this.checkForm} />
           </div>
         </form>

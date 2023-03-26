@@ -15,7 +15,6 @@ export class InputCheckBox extends React.Component<Record<string, unknown>, TChe
   }
 
   checkCheckBox(value: boolean) {
-    console.log(value);
     if (!value) {
       this.setState({
         isValid: false,
