@@ -3,7 +3,7 @@ import { TSelectState } from '../types';
 import { CustomError } from '../components/Error';
 
 export class Select extends React.Component<Record<string, unknown>, TSelectState> {
-  select: RefObject<HTMLSelectElement>
+  select: RefObject<HTMLSelectElement>;
 
   constructor(props: never) {
     super(props);
@@ -13,8 +13,8 @@ export class Select extends React.Component<Record<string, unknown>, TSelectStat
     this.state = {
       isValid: true,
       value: '',
-      error: ''
-    }
+      error: '',
+    };
   }
 
   checkSelect(value: string): void {
@@ -28,8 +28,8 @@ export class Select extends React.Component<Record<string, unknown>, TSelectStat
     } else {
       this.setState({
         isValid: false,
-        error: 'Choose the country please'
-      })
+        error: 'Choose the country please',
+      });
     }
   }
 
@@ -38,9 +38,7 @@ export class Select extends React.Component<Record<string, unknown>, TSelectStat
       <div>
         <label>
           Selct Coutry:
-          <select
-            ref={this.select}
-            className="select">
+          <select ref={this.select} className="select">
             <option value=""></option>
             <option value="Belarus">Belarus</option>
             <option value="Ukraine">Ukraine</option>
@@ -50,6 +48,6 @@ export class Select extends React.Component<Record<string, unknown>, TSelectStat
         </label>
         {!this.state.isValid && <CustomError message={this.state.error} />}
       </div>
-    )
+    );
   }
 }

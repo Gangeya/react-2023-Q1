@@ -2,7 +2,6 @@ import React, { RefObject } from 'react';
 import { CustomError } from '../components/Error';
 import { TTextInputState } from '../types';
 
-
 export class TextInput extends React.Component<Record<string, unknown>, TTextInputState> {
   textInput: RefObject<HTMLInputElement>;
 

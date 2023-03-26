@@ -11,6 +11,18 @@ export type TProduct = {
   };
 };
 
+export type TCardState = {
+  cards: TCard[];
+};
+
+export type TCard = {
+  id: number;
+  name: string;
+  date: string;
+  country: string;
+  gender: string;
+  image?: string;
+};
 
 export type TTextInputState = {
   isValid: boolean;
@@ -31,4 +43,4 @@ export type TSelectState = {
   isValid: boolean;
   value: string;
   error: string;
-}
+};

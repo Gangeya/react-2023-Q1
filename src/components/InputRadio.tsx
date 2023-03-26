@@ -3,8 +3,8 @@ import { CustomError } from '../components/Error';
 import { TCheckBoxState } from '../types';
 
 export class InputRadio extends React.Component<Record<string, unknown>, TCheckBoxState> {
-  radio1: RefObject<HTMLInputElement>
-  radio2: RefObject<HTMLInputElement>
+  radio1: RefObject<HTMLInputElement>;
+  radio2: RefObject<HTMLInputElement>;
 
   constructor(props: never) {
     super(props);
@@ -15,18 +15,17 @@ export class InputRadio extends React.Component<Record<string, unknown>, TCheckB
     this.state = {
       isValid: false,
       error: 'You must choose a gender',
-
-    }
+    };
   }
 
   checkRadio([...arr]: HTMLInputElement[]) {
     console.log(arr[0].checked, arr[1].checked);
-    const radioValue = arr.find(el => el.checked === true)?.value;
+    const radioValue = arr.find((el) => el.checked === true)?.value;
 
     if (radioValue) {
       this.setState({
         isValid: true,
-      })
+      });
     }
   }
   render() {
@@ -35,10 +34,12 @@ export class InputRadio extends React.Component<Record<string, unknown>, TCheckB
         <legend>Sex</legend>
         <label htmlFor="sex">
           <input type="radio" name="sex" value="male" ref={this.radio1} />
-          Male</label>
+          Male
+        </label>
         <label htmlFor="sex">
           <input type="radio" name="sex" value="female" ref={this.radio2} />
-          Female</label>
+          Female
+        </label>
         {!this.state.isValid && <CustomError message={this.state.error} />}
       </fieldset>
     );
