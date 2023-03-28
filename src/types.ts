@@ -21,7 +21,7 @@ export type TCard = {
   date: string;
   country: string;
   gender: string;
-  image?: string;
+  image: string;
 };
 
 export type TTextInputState = {

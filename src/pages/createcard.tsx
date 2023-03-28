@@ -5,6 +5,7 @@ import { TextInput } from '../components/TextItput';
 import { Select } from '../components/select';
 import { InputCheckBox } from '../components/InputCheckBox';
 import { InputRadio } from '../components/InputRadio';
+import { InputFile } from '../components/InputFile';
 import { Card } from '../components/Card';
 import { TCard } from '../types';
 import { TCardState } from '../types';
@@ -15,6 +16,7 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
   inputSelect: RefObject<Select>;
   inputCheckBox: RefObject<InputCheckBox>;
   inputRadio: RefObject<InputRadio>;
+  inputFile: RefObject<InputFile>;
 
   constructor(props: never) {
     super(props);
@@ -28,6 +30,7 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
     this.inputSelect = React.createRef();
     this.inputCheckBox = React.createRef();
     this.inputRadio = React.createRef();
+    this.inputFile = React.createRef();
     this.submitHandler = this.submitHandler.bind(this);
   }
 
@@ -52,6 +55,10 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
     const { gender, isValid } = this.inputRadio.current!.checkRadio([radio1, radio2]);
     errorList.push(isValid);
 
+    const img = this.inputFile.current?.imageRef.current?.files?.[0]!;
+    const { imgUrl, imgIsValid } = this.inputFile.current!.getImg(img);
+    errorList.push(imgIsValid);
+
     if (!errorList.some(el => el === false)) {
       const card: TCard = {
         id: uuid(),
@@ -59,6 +66,7 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
         date: date,
         country: select,
         gender: gender,
+        image: imgUrl,
       };
 
       let cardsList = this.state.cards;
@@ -90,6 +98,7 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
               <Select ref={this.inputSelect} />
               <InputCheckBox ref={this.inputCheckBox} />
               <InputRadio ref={this.inputRadio} />
+              <InputFile ref={this.inputFile} />
               <button type="submit" value="Submit">
                 Create Card
               </button>
