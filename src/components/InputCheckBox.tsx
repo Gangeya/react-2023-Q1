@@ -20,9 +20,11 @@ export class InputCheckBox extends React.Component<Record<string, unknown>, TChe
         isValid: false,
         error: 'Please set checked!',
       });
-    } else {
-      this.setState({ isValid: true });
+      return false;
     }
+
+    this.setState({ isValid: true });
+    return true;
   }
   render() {
     return (

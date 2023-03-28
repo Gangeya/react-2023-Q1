@@ -9,7 +9,7 @@ export class TextInput extends React.Component<Record<string, unknown>, TTextInp
     super(props);
     this.textInput = React.createRef();
     this.state = {
-      isValid: true,
+      isValid: false,
       error: '',
     };
   }
@@ -20,16 +20,20 @@ export class TextInput extends React.Component<Record<string, unknown>, TTextInp
         isValid: false,
         error: 'The field must not be empty',
       });
-    } else if (value[0] !== value[0].toUpperCase()) {
+      return false;
+    }
+    if (value[0] !== value[0].toUpperCase()) {
       this.setState({
         isValid: false,
         error: 'The first letter must be capitalized',
       });
-    } else {
-      this.setState({
-        isValid: true,
-      });
+      return false;
     }
+
+    this.setState({
+      isValid: true,
+    });
+    return true;
   };
 
   render() {

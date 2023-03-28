@@ -16,7 +16,7 @@ export type TCardState = {
 };
 
 export type TCard = {
-  id: number;
+  id: string;
   name: string;
   date: string;
   country: string;

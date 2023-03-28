@@ -1,4 +1,5 @@
 import React, { RefObject } from 'react';
+import uuid from 'react-uuid';
 import { InputDate } from '../components/InputDate';
 import { TextInput } from '../components/TextItput';
 import { Select } from '../components/select';
@@ -19,15 +20,7 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
     super(props);
 
     this.state = {
-      cards: [
-        {
-          id: 1,
-          name: 'Eugene',
-          date: new Date(1983 - 11 - 23).toISOString().slice(0, 10),
-          country: 'Belarus',
-          gender: 'Male',
-        },
-      ],
+      cards: [],
     };
 
     this.inputName = React.createRef();
@@ -40,22 +33,50 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
 
   submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+    const errorList = [];
 
     const name = this.inputName.current!.textInput.current!.value.trim();
-    this.inputName.current?.checkName(name);
+    errorList.push(this.inputName.current?.checkName(name));
 
     const date = this.inputDate.current!.dateInput.current!.value;
-    this.inputDate.current?.checkDate(date);
+    errorList.push(this.inputDate.current?.checkDate(date));
 
     const select = this.inputSelect.current!.select.current!.value;
-    this.inputSelect.current?.checkSelect(select);
+    errorList.push(this.inputSelect.current?.checkSelect(select));
 
     const checkBox = this.inputCheckBox.current!.checkInput.current!.checked;
-    this.inputCheckBox.current?.checkCheckBox(checkBox);
+    errorList.push(this.inputCheckBox.current?.checkCheckBox(checkBox));
 
     const radio1 = this.inputRadio.current!.radio1.current!;
     const radio2 = this.inputRadio.current!.radio2.current!;
-    this.inputRadio.current?.checkRadio([radio1, radio2]);
+    const { gender, isValid } = this.inputRadio.current!.checkRadio([radio1, radio2]);
+    errorList.push(isValid);
+
+    if (!errorList.some(el => el === false)) {
+      const card: TCard = {
+        id: uuid(),
+        name: name,
+        date: date,
+        country: select,
+        gender: gender,
+      };
+
+      let cardsList = this.state.cards;
+      cardsList.push(card);
+
+      this.setState({
+        cards: cardsList,
+      });
+      alert('Card successfully');
+      this.inputName.current!.textInput.current!.value = '';
+      this.inputDate.current!.dateInput.current!.value = new Date().toISOString();
+      this.inputSelect.current!.select.current!.value = '';
+      this.inputCheckBox.current!.checkInput.current!.checked = false;
+      this.inputRadio.current!.radio1.current!.checked = false;
+      this.inputRadio.current!.radio2.current!.checked = false;
+    }
+
+
   };
   render() {
     return (
@@ -77,10 +98,9 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
         </div>
 
         <div className="container">
-          <Card {...this.state.cards[0]} />
-          {/* {cards.map((card) => (
-            <Card {...card} />
-          ))} */}
+          {this.state.cards.map((card) => (
+            <Card {...card} key={card.id} />
+          ))}
         </div>
       </>
     );

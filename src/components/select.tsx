@@ -17,20 +17,20 @@ export class Select extends React.Component<Record<string, unknown>, TSelectStat
     };
   }
 
-  checkSelect(value: string): void {
+  checkSelect(value: string) {
     const selectValue = value.trim();
-    console.log(value);
 
-    if (selectValue) {
-      this.setState({
-        isValid: true,
-      });
-    } else {
+    if (!selectValue) {
       this.setState({
         isValid: false,
         error: 'Choose the country please',
       });
+      return false;
     }
+    this.setState({
+      isValid: true,
+    });
+    return true;
   }
 
   render() {

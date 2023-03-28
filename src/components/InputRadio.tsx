@@ -13,19 +13,30 @@ export class InputRadio extends React.Component<Record<string, unknown>, TCheckB
     this.radio2 = React.createRef();
 
     this.state = {
-      isValid: false,
+      isValid: true,
       error: 'You must choose a gender',
     };
   }
 
-  checkRadio([...arr]: HTMLInputElement[]) {
-    console.log(arr[0].checked, arr[1].checked);
-    const radioValue = arr.find((el) => el.checked === true)?.value;
+  checkRadio([...arr]: HTMLInputElement[]): { gender: string, isValid: boolean } {
+    const radioValue = arr.find((el) => el.checked === true)!;
 
     if (radioValue) {
       this.setState({
         isValid: true,
       });
+      return {
+        gender: radioValue.value,
+        isValid: true,
+      }
+    }
+
+    this.setState({
+      isValid: false,
+    });
+    return {
+      gender: '',
+      isValid: false,
     }
   }
   render() {
