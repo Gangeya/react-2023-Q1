@@ -18,7 +18,7 @@ export class InputRadio extends React.Component<Record<string, unknown>, TCheckB
     };
   }
 
-  checkRadio([...arr]: HTMLInputElement[]): { gender: string, isValid: boolean } {
+  checkRadio([...arr]: HTMLInputElement[]): { gender: string; isValid: boolean } {
     const radioValue = arr.find((el) => el.checked === true)!;
 
     if (radioValue) {
@@ -28,7 +28,7 @@ export class InputRadio extends React.Component<Record<string, unknown>, TCheckB
       return {
         gender: radioValue.value,
         isValid: true,
-      }
+      };
     }
 
     this.setState({
@@ -37,7 +37,7 @@ export class InputRadio extends React.Component<Record<string, unknown>, TCheckB
     return {
       gender: '',
       isValid: false,
-    }
+    };
   }
   render() {
     return (
@@ -46,12 +46,12 @@ export class InputRadio extends React.Component<Record<string, unknown>, TCheckB
           <legend>Sex</legend>
           <label htmlFor="sex">
             <input type="radio" name="sex" value="male" ref={this.radio1} />
-          Male
-        </label>
+            Male
+          </label>
           <label htmlFor="sex">
             <input type="radio" name="sex" value="female" ref={this.radio2} />
-          Female
-        </label>
+            Female
+          </label>
           {!this.state.isValid && <CustomError message={this.state.error} />}
         </fieldset>
       </div>

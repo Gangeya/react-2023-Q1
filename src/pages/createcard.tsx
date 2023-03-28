@@ -55,11 +55,11 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
     const { gender, isValid } = this.inputRadio.current!.checkRadio([radio1, radio2]);
     errorList.push(isValid);
 
-    const img = this.inputFile.current?.imageRef.current?.files?.[0]!;
+    const img = this.inputFile.current?.imageRef.current?.files?.[0];
     const { imgUrl, imgIsValid } = this.inputFile.current!.getImg(img);
     errorList.push(imgIsValid);
 
-    if (!errorList.some(el => el === false)) {
+    if (!errorList.some((el) => el === false)) {
       const card: TCard = {
         id: uuid(),
         name: name,
@@ -69,7 +69,7 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
         image: imgUrl,
       };
 
-      let cardsList = this.state.cards;
+      const cardsList = this.state.cards;
       cardsList.push(card);
 
       this.setState({
@@ -83,8 +83,6 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
       this.inputRadio.current!.radio1.current!.checked = false;
       this.inputRadio.current!.radio2.current!.checked = false;
     }
-
-
   };
   render() {
     return (
@@ -99,11 +97,10 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
               <InputCheckBox ref={this.inputCheckBox} />
               <InputRadio ref={this.inputRadio} />
               <InputFile ref={this.inputFile} />
-
             </div>
             <button type="submit" value="Submit">
               Create Card
-              </button>
+            </button>
           </form>
         </div>
 
