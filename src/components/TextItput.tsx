@@ -9,7 +9,7 @@ export class TextInput extends React.Component<Record<string, unknown>, TTextInp
     super(props);
     this.textInput = React.createRef();
     this.state = {
-      isValid: false,
+      isValid: true,
       error: '',
     };
   }

@@ -8,7 +8,7 @@ export class InputFile extends React.Component<Record<string, unknown>, TTextInp
     super(props);
     this.imageRef = React.createRef();
     this.state = {
-      isValid: false,
+      isValid: true,
       error: '',
     };
   }

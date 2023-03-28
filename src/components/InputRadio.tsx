@@ -41,18 +41,20 @@ export class InputRadio extends React.Component<Record<string, unknown>, TCheckB
   }
   render() {
     return (
-      <fieldset>
-        <legend>Sex</legend>
-        <label htmlFor="sex">
-          <input type="radio" name="sex" value="male" ref={this.radio1} />
+      <div>
+        <fieldset>
+          <legend>Sex</legend>
+          <label htmlFor="sex">
+            <input type="radio" name="sex" value="male" ref={this.radio1} />
           Male
         </label>
-        <label htmlFor="sex">
-          <input type="radio" name="sex" value="female" ref={this.radio2} />
+          <label htmlFor="sex">
+            <input type="radio" name="sex" value="female" ref={this.radio2} />
           Female
         </label>
-        {!this.state.isValid && <CustomError message={this.state.error} />}
-      </fieldset>
+          {!this.state.isValid && <CustomError message={this.state.error} />}
+        </fieldset>
+      </div>
     );
   }
 }

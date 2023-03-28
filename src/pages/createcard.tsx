@@ -92,17 +92,18 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
         <div className="form-wrapper">
           <h1>Create Card</h1>
           <form className="form" onSubmit={this.submitHandler}>
-            <div>
+            <div className="container">
               <TextInput ref={this.inputName} />
               <InputDate ref={this.inputDate} />
               <Select ref={this.inputSelect} />
               <InputCheckBox ref={this.inputCheckBox} />
               <InputRadio ref={this.inputRadio} />
               <InputFile ref={this.inputFile} />
-              <button type="submit" value="Submit">
-                Create Card
-              </button>
+
             </div>
+            <button type="submit" value="Submit">
+              Create Card
+              </button>
           </form>
         </div>
 

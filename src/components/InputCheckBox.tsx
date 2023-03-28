@@ -9,7 +9,7 @@ export class InputCheckBox extends React.Component<Record<string, unknown>, TChe
     this.checkInput = React.createRef();
 
     this.state = {
-      isValid: false,
+      isValid: true,
       error: '',
     };
   }

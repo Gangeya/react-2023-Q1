@@ -8,7 +8,7 @@ export class InputDate extends React.Component<Record<string, unknown>, TDateInp
     super(props);
     this.dateInput = React.createRef();
     this.state = {
-      isValid: false,
+      isValid: true,
       error: '',
     };
   }
