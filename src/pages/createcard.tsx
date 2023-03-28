@@ -82,6 +82,7 @@ export class FormCreateCard extends React.Component<Record<string, unknown>, TCa
       this.inputCheckBox.current!.checkInput.current!.checked = false;
       this.inputRadio.current!.radio1.current!.checked = false;
       this.inputRadio.current!.radio2.current!.checked = false;
+      this.inputFile.current!.imageRef.current!.value = '';
     }
   };
   render() {
