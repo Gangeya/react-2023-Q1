@@ -1,56 +1,55 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface ISearchState {
   inputSearchValue: string;
 }
 
-export class Search extends React.Component<Record<string, never>, ISearchState> {
-  constructor(props: never) {
-    super(props);
-    this.state = {
-      inputSearchValue: localStorage.getItem('key-inputSearchValue') || '',
-    };
-  }
+export const Search = () => {
+  const [inputSearchValue, setInputSearchValue] = useState('');
+  const refSearch = useRef(inputSearchValue);
 
-  handleSearch(e: React.FormEvent<HTMLFormElement>) {
+  useEffect(() => {
+    refSearch.current = inputSearchValue;
+  }, [inputSearchValue]);
+
+  useEffect(() => {
+    const key = localStorage.getItem('key-inputSearchValue');
+    if (key) {
+      setInputSearchValue(key);
+    }
+    return () => {
+      localStorage.setItem('key-inputSearchValue', refSearch.current);
+    };
+  }, [])
+
+
+  function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
   }
 
-  componentDidMount() {
-    localStorage.setItem('key-inputSearchValue', this.state.inputSearchValue);
+  function changeSearch(e: React.ChangeEvent<HTMLInputElement>) {
+    setInputSearchValue(e.target.value);
   }
 
-  componentWillUnmount() {
-    localStorage.setItem('key-inputSearchValue', this.state.inputSearchValue);
-  }
 
-  changeSearch(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({
-      inputSearchValue: e.target.value,
-    });
-    console.log(this.state.inputSearchValue);
-  }
-
-  render() {
-    return (
-      <div className="search">
-        <form className="search-form" onSubmit={(e) => this.handleSearch(e)}>
-          <div className="search-wrap">
-            <input
-              className="search-input"
-              type="search"
-              placeholder="Search..."
-              name="search"
-              value={this.state.inputSearchValue}
-              id="search"
-              onChange={(e) => this.changeSearch(e)}
-            />
-            <button className="search-btn" type="submit">
-              Search
+  return (
+    <div className="search">
+      <form className="search-form" onSubmit={(e) => handleSearch(e)}>
+        <div className="search-wrap">
+          <input
+            className="search-input"
+            type="search"
+            placeholder="Search..."
+            name="search"
+            value={inputSearchValue}
+            id="search"
+            onChange={(e) => changeSearch(e)}
+          />
+          <button className="search-btn" type="submit">
+            Search
             </button>
-          </div>
-        </form>
-      </div>
-    );
-  }
+        </div>
+      </form>
+    </div>
+  )
 }
