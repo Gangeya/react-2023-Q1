@@ -1,3 +1,5 @@
+import { Path, UseFormRegister } from 'react-hook-form';
+
 export type TProduct = {
   id: number;
   title: string;
@@ -10,6 +12,11 @@ export type TProduct = {
     count: number;
   };
 };
+
+export interface IFormValues {
+  "Your Name": string;
+  Age: number;
+}
 
 export type TCardState = {
   cards: TCard[];
@@ -24,23 +31,8 @@ export type TCard = {
   image: string;
 };
 
-export type TTextInputState = {
-  isValid: boolean;
-  error: string;
-};
-
-export type TCheckBoxState = {
-  isValid: boolean;
-  error: string;
-};
-
-export type TDateInputState = {
-  isValid: boolean;
-  error: string;
-};
-
-export type TSelectState = {
-  isValid: boolean;
-  value: string;
-  error: string;
+export type TInputProps = {
+  label: Path<IFormValues>;
+  register: UseFormRegister<IFormValues>;
+  required: boolean;
 };

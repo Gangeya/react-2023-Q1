@@ -4,8 +4,6 @@ type TErrorMessage = {
   message: string;
 };
 
-export class CustomError extends React.Component<TErrorMessage> {
-  render() {
-    return <p className="error">{this.props.message}</p>;
-  }
+export const CustomError = ({ message }: TErrorMessage) => {
+  return (<p className="error">{message}</p>);
 }
