@@ -35,6 +35,16 @@ export const FormCreateCard = () => {
               />
               {errors["Your Name"] && <CustomError message="Name is required!" />}
             </div>
+
+            <div className="form-group">
+              <InputDate
+                label="Day Of Birth"
+                register={register}
+                required
+              />
+              {errors["Day Of Birth"] && <CustomError message="Name is required!" />}
+            </div>
+
           </div>
           <button type="submit" value="Submit">
             Create Card

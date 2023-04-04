@@ -15,7 +15,7 @@ export type TProduct = {
 
 export interface IFormValues {
   "Your Name": string;
-  Age: number;
+  "Day Of Birth": string;
 }
 
 export type TCardState = {

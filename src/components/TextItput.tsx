@@ -4,6 +4,6 @@ import { TInputProps } from '../types';
 export const TextInput = ({ label, register, required }: TInputProps) => (
   <>
     <label>{label}</label>
-    <input {...register(label, { required })} />
+    <input type="text" {...register(label, { required })} />
   </>
 );

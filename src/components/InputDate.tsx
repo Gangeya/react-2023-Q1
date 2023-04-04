@@ -1,8 +1,6 @@
-import React, { forwardRef, RefObject } from 'react';
-type Inputs = {
-  name: string,
-};
-export const InputDate = forwardRef<HTMLInputElement, Inputs>(({ name }, ref) => {
+import React from 'react';
+import { TInputProps } from '../types';
+export const InputDate = ({ label, register, required }: TInputProps) => {
 
   // checkDate = (value: string) => {
   //   const date = new Date(value);
@@ -39,9 +37,9 @@ export const InputDate = forwardRef<HTMLInputElement, Inputs>(({ name }, ref) =>
   // };
 
   return (
-    <div>
-      <p>Select date of birth</p>
-      <input name={name} type="date" ref={ref} />
-    </div>
+    <>
+      <label>{label}</label>
+      <input {...register(label, { required })} type="date" />
+    </>
   );
-});
+}
