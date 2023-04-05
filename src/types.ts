@@ -17,6 +17,8 @@ export interface IFormValues {
   'Your Name': string;
   'Day Of Birth': string;
   'agreement': boolean;
+  'Country': string;
+  'Gender': string;
 }
 
 export type TCardState = {

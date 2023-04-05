@@ -46,7 +46,23 @@ export const FormCreateCard = () => {
               <InputCheckBox label="agreement" register={register} required />
               {errors.agreement && <CustomError message="Agreements is required" />}
             </div>
+
+            <div className="form-group">
+              <Select label="Country" register={register} required />
+              {errors.Country && <CustomError message="Country is required" />}
+            </div>
+
+            <div className="form-gro">
+              <InputRadio label="Gender" register={register} required />
+              {errors.Gender && <CustomError message="Gender is required" />}
+            </div>
+
+            <div className="form-group">
+              <InputFile label="Gender" register={register} required />
+            </div>
           </div>
+
+
           <button type="submit" value="Submit">
             Create Card
           </button>
