@@ -19,6 +19,7 @@ export interface IFormValues {
   'agreement': boolean;
   'Country': string;
   'Gender': string;
+  'File': string;
 }
 
 export type TCardState = {

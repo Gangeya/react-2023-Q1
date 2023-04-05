@@ -3,7 +3,7 @@ import { TInputProps } from '../types';
 export const InputRadio = ({ label, register, required }: TInputProps) => {
 
   return (
-    <div>
+    <>
       <fieldset>
         <legend>Sex</legend>
         <label htmlFor="sex">
@@ -15,7 +15,7 @@ export const InputRadio = ({ label, register, required }: TInputProps) => {
             Female
           </label>
       </fieldset>
-    </div>
+    </>
   );
 }
 

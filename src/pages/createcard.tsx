@@ -24,8 +24,6 @@ export const FormCreateCard = () => {
     alert(JSON.stringify(data));
   };
 
-  console.log(errors)
-
   return (
     <>
       <div className="form-wrapper">
@@ -58,7 +56,8 @@ export const FormCreateCard = () => {
             </div>
 
             <div className="form-group">
-              <InputFile label="Gender" register={register} required />
+              <InputFile label="File" register={register} required />
+              {errors.File && <CustomError message={errors.File.message} />}
             </div>
           </div>
 
