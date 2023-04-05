@@ -1,39 +1,13 @@
-import React, { RefObject } from 'react';
-import { CustomError } from '../components/Error';
-import { TCheckBoxState } from '../types';
+import React from 'react';
+import { TInputProps } from '../types';
 
-export class InputCheckBox extends React.Component<Record<string, unknown>, TCheckBoxState> {
-  checkInput: RefObject<HTMLInputElement>;
-  constructor(props: never) {
-    super(props);
-    this.checkInput = React.createRef();
+export const InputCheckBox = ({ label, register, required }: TInputProps) => {
 
-    this.state = {
-      isValid: true,
-      error: '',
-    };
-  }
-
-  checkCheckBox(value: boolean) {
-    if (!value) {
-      this.setState({
-        isValid: false,
-        error: 'Please set checked!',
-      });
-      return false;
-    }
-
-    this.setState({ isValid: true });
-    return true;
-  }
-  render() {
-    return (
-      <div>
-        <label>
-          <input type="checkbox" ref={this.checkInput} />I agree to the processing of personal data
-        </label>
-        {!this.state.isValid && <CustomError message={this.state.error} />}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <label>
+        <input type="checkbox" {...register(label, { required })} />I agree to the processing of personal data
+      </label>
+    </div>
+  );
+};

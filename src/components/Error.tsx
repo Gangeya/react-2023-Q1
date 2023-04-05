@@ -5,5 +5,5 @@ type TErrorMessage = {
 };
 
 export const CustomError = ({ message }: TErrorMessage) => {
-  return (<p className="error">{message}</p>);
-}
+  return <p className="error">{message}</p>;
+};

@@ -11,7 +11,6 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-
       <header>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">About Us</NavLink>
@@ -23,7 +22,6 @@ function App() {
         <Route path="/createcard" element={<FormCreateCard />} />
         <Route path="/*" element={<Page404 />} />
       </Routes>
-
     </div>
   );
 }

@@ -14,12 +14,17 @@ import { TCardState } from '../types';
 import { CustomError } from '../components/Error';
 
 export const FormCreateCard = () => {
-
-  const { register, handleSubmit, formState: { errors } } = useForm<IFormValues>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormValues>();
 
   const onSubmit = (data: IFormValues) => {
     alert(JSON.stringify(data));
   };
+
+  console.log(errors)
 
   return (
     <>
@@ -28,27 +33,23 @@ export const FormCreateCard = () => {
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
           <div className="container">
             <div className="form-group">
-              <TextInput
-                label="Your Name"
-                register={register}
-                required
-              />
-              {errors["Your Name"] && <CustomError message="Name is required!" />}
+              <TextInput label="Your Name" register={register} required />
+              {errors['Your Name'] && <CustomError message={errors['Your Name'].message} />}
             </div>
 
             <div className="form-group">
-              <InputDate
-                label="Day Of Birth"
-                register={register}
-                required
-              />
-              {errors["Day Of Birth"] && <CustomError message="Name is required!" />}
+              <InputDate label="Day Of Birth" register={register} required />
+              {errors['Day Of Birth'] && <CustomError message="Day of Birth is required" />}
             </div>
 
+            <div className="form-group">
+              <InputCheckBox label="agreement" register={register} required />
+              {errors.agreement && <CustomError message="Agreements is required" />}
+            </div>
           </div>
           <button type="submit" value="Submit">
             Create Card
-            </button>
+          </button>
         </form>
       </div>
 
@@ -59,4 +60,4 @@ export const FormCreateCard = () => {
       </div>
     </>
   );
-}
+};

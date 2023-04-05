@@ -20,8 +20,7 @@ export const Search = () => {
     return () => {
       localStorage.setItem('key-inputSearchValue', refSearch.current);
     };
-  }, [])
-
+  }, []);
 
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -30,7 +29,6 @@ export const Search = () => {
   function changeSearch(e: React.ChangeEvent<HTMLInputElement>) {
     setInputSearchValue(e.target.value);
   }
-
 
   return (
     <div className="search">
@@ -47,9 +45,9 @@ export const Search = () => {
           />
           <button className="search-btn" type="submit">
             Search
-            </button>
+          </button>
         </div>
       </form>
     </div>
-  )
-}
+  );
+};

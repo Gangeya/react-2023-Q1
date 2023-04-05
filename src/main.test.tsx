@@ -6,9 +6,11 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('App', () => {
   it('Correct Rendering App', () => {
-    render(<BrowserRouter>
-      <App />
-    </BrowserRouter>);
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
     expect(screen.getByText('Home')).toBeInTheDocument();
   });
-})
+});

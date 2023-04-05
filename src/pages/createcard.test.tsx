@@ -15,4 +15,3 @@ describe('Create Card', () => {
     ).toHaveTextContent('Create Card');
   });
 });
-
