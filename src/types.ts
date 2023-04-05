@@ -30,6 +30,7 @@ export type TCard = {
   id: string;
   name: string;
   date: string;
+  agreement: boolean;
   country: string;
   gender: string;
   image: string;

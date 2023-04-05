@@ -18,10 +18,26 @@ export const FormCreateCard = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<IFormValues>();
 
+  const [cards, setCars] = useState<TCard[]>([]);
+
   const onSubmit = (data: IFormValues) => {
-    alert(JSON.stringify(data));
+
+
+    const card: TCard = {
+      id: uuid(),
+      name: data["Your Name"],
+      country: data.Country,
+      date: data["Day Of Birth"],
+      gender: data.Gender,
+      agreement: data.agreement,
+      image: URL.createObjectURL(data.File[0])
+    }
+
+    setCars((cards) => [...cards, { ...card }]);
+    reset();
   };
 
   return (
@@ -69,9 +85,9 @@ export const FormCreateCard = () => {
       </div>
 
       <div className="container">
-        {/* {this.state.cards.map((card) => (
+        {cards.map((card) => (
           <Card {...card} key={card.id} />
-        ))} */}
+        ))}
       </div>
     </>
   );
