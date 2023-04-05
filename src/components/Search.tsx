@@ -1,9 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-interface ISearchState {
-  inputSearchValue: string;
-}
-
 export const Search = () => {
   const [inputSearchValue, setInputSearchValue] = useState('');
   const refSearch = useRef(inputSearchValue);

@@ -1,21 +1,19 @@
 import React from 'react';
 import { TInputProps } from '../types';
 export const InputRadio = ({ label, register, required }: TInputProps) => {
-
   return (
     <>
       <fieldset>
         <legend>Sex</legend>
         <label htmlFor="sex">
           <input type="radio" value="male" {...register(label, { required })} />
-            Male
-          </label>
+          Male
+        </label>
         <label htmlFor="sex">
           <input type="radio" value="female" {...register(label, { required })} />
-            Female
-          </label>
+          Female
+        </label>
       </fieldset>
     </>
   );
-}
-
+};

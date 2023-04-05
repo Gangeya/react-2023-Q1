@@ -10,8 +10,8 @@ export const TextInput = ({ label, register, required }: TInputProps) => (
         required: 'Name is required!',
         pattern: {
           value: /^[A-Z][a-z0-9_-]{3,19}$/,
-          message: 'First letter must be uppercase, minimum 3 letters'
-        }
+          message: 'First letter must be uppercase, minimum 3 letters',
+        },
       })}
     />
   </>

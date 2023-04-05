@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Path, useForm, UseFormRegister } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import uuid from 'react-uuid';
 import { InputDate } from '../components/InputDate';
 import { TextInput } from '../components/TextItput';
@@ -10,7 +10,6 @@ import { InputRadio } from '../components/InputRadio';
 import { InputFile } from '../components/InputFile';
 import { Card } from '../components/Card';
 import { TCard } from '../types';
-import { TCardState } from '../types';
 import { CustomError } from '../components/Error';
 
 export const FormCreateCard = () => {
@@ -24,17 +23,15 @@ export const FormCreateCard = () => {
   const [cards, setCars] = useState<TCard[]>([]);
 
   const onSubmit = (data: IFormValues) => {
-
-
     const card: TCard = {
       id: uuid(),
-      name: data["Your Name"],
+      name: data['Your Name'],
       country: data.Country,
-      date: data["Day Of Birth"],
+      date: data['Day Of Birth'],
       gender: data.Gender,
       agreement: data.agreement,
-      image: URL.createObjectURL(data.File[0])
-    }
+      image: URL.createObjectURL(data.File[0]),
+    };
 
     setCars((cards) => [...cards, { ...card }]);
     reset();
@@ -76,7 +73,6 @@ export const FormCreateCard = () => {
               {errors.File && <CustomError message={errors.File.message} />}
             </div>
           </div>
-
 
           <button type="submit" value="Submit">
             Create Card
