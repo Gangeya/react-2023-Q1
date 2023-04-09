@@ -10,7 +10,7 @@ interface IProduct {
 
 export const ModalProduct = ({ product, title, onClose }: IProduct) => {
   return (
-    <div className="modal-backdrop">
+    <div className="modal-backdrop" onClick={onClose}>
       <div className="modal-wrap">
         <h2>{title}</h2>
         <p>Title: {product.title}</p>
