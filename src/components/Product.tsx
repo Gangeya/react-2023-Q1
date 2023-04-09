@@ -1,20 +1,32 @@
 import React from 'react';
+import { set } from 'react-hook-form';
 import { TProduct } from '../types';
 
-export class Product extends React.Component<TProduct> {
-  constructor(props: TProduct) {
-    super(props);
-  }
-  render() {
-    return (
-      <div className="product">
-        <p>{this.props.title}</p>
-        <img data-testid="img-id" src={this.props.image} alt={this.props.title} />
-        <p>{this.props.category}</p>
-        <p>Price: {this.props.price}</p>
-        <p>Rate: {this.props.rating.rate}</p>
-        <p>Count: {this.props.rating.count}</p>
-      </div>
-    );
-  }
+interface IProduct {
+  data: TProduct;
+  isOpen: (value: boolean) => void;
+  setDetails: (value: TProduct) => void;
+}
+
+export const Product = ({ data, isOpen, setDetails }: IProduct) => {
+
+  return (
+    <div
+      className="product"
+      onClick={() => {
+        isOpen(true);
+        console.log('click')
+        setDetails(data);
+      }
+      }
+      role="presentation"
+    >
+      <p>{data.title}</p>
+      <img data-testid="img-id" src={data.thumbnail} alt={data.title} />
+      <p>{data.category}</p>
+      <p>Price: {data.price}</p>
+      <p>Rate: {data.rating}</p>
+      <p>Count: {data.stock}</p>
+    </div>
+  );
 }

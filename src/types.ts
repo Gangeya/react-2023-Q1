@@ -3,15 +3,17 @@ import { Path, UseFormRegister } from 'react-hook-form';
 export type TProduct = {
   id: number;
   title: string;
+  brand: string;
   price: number;
   description: string;
+  discountPercentage: number;
   category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
+  images: string[];
+  rating: number;
+  stock: number;
+  thumbnail: string;
 };
+
 
 export interface IFormValues {
   'Your Name': string;
