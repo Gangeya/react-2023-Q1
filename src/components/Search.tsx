@@ -1,8 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useCards } from '../components/useCards';
+import { TProduct } from 'types';
 
-export const Search = () => {
+interface ISearchProps {
+  setCards: (arr: TProduct[]) => void;
+}
+export const Search = ({ setCards }: ISearchProps) => {
   const [inputSearchValue, setInputSearchValue] = useState('');
   const refSearch = useRef(inputSearchValue);
+  const { setError, setIsLoading } = useCards();
 
   useEffect(() => {
     refSearch.current = inputSearchValue;
@@ -26,22 +32,22 @@ export const Search = () => {
     setInputSearchValue(e.target.value);
   }
 
-  function searchHandler(e: React.MouseEvent<HTMLButtonElement>): void {
-    // async function fetchData() {
-    //   try {
-    //     setError('');
-    //     setIsLoading(true);
-    //     const res = await fetch('https://dummyjson.com/products?limit=10');
-    //     const data = await res.json();
-    //     setProducts(data.products);
-    //     setIsLoading(false);
-    //   } catch (e: unknown) {
-    //     setIsLoading(false);
-    //     const error = e as Error;
-    //     setError(error.message)
+  async function searchHandler(e: React.MouseEvent<HTMLButtonElement>) {
 
-    //   } 
-    // }
+    try {
+      setError('');
+      setIsLoading(true);
+      const res = await fetch(`https://dummyjson.com/products/search?q=${inputSearchValue}`);
+      const data = await res.json();
+      console.log(data.products);
+      setCards(data.products);
+      setIsLoading(false);
+    } catch (e: unknown) {
+      setIsLoading(false);
+      const error = e as Error;
+      setError(error.message)
+
+    }
   }
 
   return (

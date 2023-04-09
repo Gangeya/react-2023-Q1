@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { TProduct } from 'types';
 
 export function useCards() {
-  const [products, setProducts] = useState<TProduct[]>([]);
+  const [cards, setCards] = useState<TProduct[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -26,7 +26,7 @@ export function useCards() {
       setIsLoading(true);
       const res = await fetch('https://dummyjson.com/products?limit=10');
       const data = await res.json();
-      setProducts(data.products);
+      setCards(data.products);
       setIsLoading(false);
     } catch (e: unknown) {
       setIsLoading(false);
@@ -41,5 +41,16 @@ export function useCards() {
     fetchData();
   }, [])
 
-  return { products, isLoading, error, productDetails, isOpen, setIsOpen, setProductDetails }
+  return {
+    cards,
+    isLoading,
+    error,
+    productDetails,
+    isOpen,
+    setIsLoading,
+    setCards,
+    setError,
+    setIsOpen,
+    setProductDetails
+  }
 }
