@@ -26,6 +26,24 @@ export const Search = () => {
     setInputSearchValue(e.target.value);
   }
 
+  function searchHandler(e: React.MouseEvent<HTMLButtonElement>): void {
+    // async function fetchData() {
+    //   try {
+    //     setError('');
+    //     setIsLoading(true);
+    //     const res = await fetch('https://dummyjson.com/products?limit=10');
+    //     const data = await res.json();
+    //     setProducts(data.products);
+    //     setIsLoading(false);
+    //   } catch (e: unknown) {
+    //     setIsLoading(false);
+    //     const error = e as Error;
+    //     setError(error.message)
+
+    //   } 
+    // }
+  }
+
   return (
     <div className="search">
       <form className="search-form" onSubmit={(e) => handleSearch(e)}>
@@ -39,7 +57,9 @@ export const Search = () => {
             id="search"
             onChange={(e) => changeSearch(e)}
           />
-          <button className="search-btn" type="submit">
+          <button
+            onClick={searchHandler}
+            className="search-btn" type="submit">
             Search
           </button>
         </div>

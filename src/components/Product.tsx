@@ -15,7 +15,6 @@ export const Product = ({ data, isOpen, setDetails }: IProduct) => {
       className="product"
       onClick={() => {
         isOpen(true);
-        console.log('click')
         setDetails(data);
       }
       }
