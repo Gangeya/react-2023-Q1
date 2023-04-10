@@ -32,21 +32,18 @@ export const Search = ({ setCards }: ISearchProps) => {
     setInputSearchValue(e.target.value);
   }
 
-  async function searchHandler(e: React.MouseEvent<HTMLButtonElement>) {
-
+  async function searchHandler() {
     try {
       setError('');
       setIsLoading(true);
       const res = await fetch(`https://dummyjson.com/products/search?q=${inputSearchValue}`);
       const data = await res.json();
-      console.log(data.products);
       setCards(data.products);
       setIsLoading(false);
     } catch (e: unknown) {
       setIsLoading(false);
       const error = e as Error;
-      setError(error.message)
-
+      setError(error.message);
     }
   }
 
@@ -63,9 +60,7 @@ export const Search = ({ setCards }: ISearchProps) => {
             id="search"
             onChange={(e) => changeSearch(e)}
           />
-          <button
-            onClick={searchHandler}
-            className="search-btn" type="submit">
+          <button onClick={searchHandler} className="search-btn" type="submit">
             Search
           </button>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { TInputProps } from '../types';
 
-export const TextInput = ({ label, register, required }: TInputProps) => (
+export const TextInput = ({ label, register }: TInputProps) => (
   <>
     <label>{label}</label>
     <input

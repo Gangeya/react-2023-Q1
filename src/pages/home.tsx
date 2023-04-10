@@ -5,8 +5,16 @@ import { ModalProduct } from '../components/ModalProduct/ModalProduct';
 import { useCards } from '../components/useCards';
 
 export const Home = () => {
-
-  const { cards, setCards, isLoading, error, productDetails, isOpen, setIsOpen, setProductDetails } = useCards();
+  const {
+    cards,
+    setCards,
+    isLoading,
+    error,
+    productDetails,
+    isOpen,
+    setIsOpen,
+    setProductDetails,
+  } = useCards();
 
   return (
     <>
@@ -15,7 +23,13 @@ export const Home = () => {
       <Search setCards={setCards} />
       {isLoading && <p className="loading">Loading...</p>}
       {error && <p className="error">{error}</p>}
-      {isOpen && <ModalProduct onClose={() => setIsOpen(false)} product={productDetails} title="Product Details" />}
+      {isOpen && (
+        <ModalProduct
+          onClose={() => setIsOpen(false)}
+          product={productDetails}
+          title="Product Details"
+        />
+      )}
       <div className="container">
         {cards.map((card) => (
           <Product data={card} key={card.id} isOpen={setIsOpen} setDetails={setProductDetails} />
@@ -23,4 +37,4 @@ export const Home = () => {
       </div>
     </>
   );
-}
+};

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TInputProps } from '../types';
-export const InputFile = ({ label, register, required }: TInputProps) => {
+export const InputFile = ({ label, register }: TInputProps) => {
   return (
     <>
       <p>Add Image</p>

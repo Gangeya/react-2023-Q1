@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TProduct } from 'types';
 
 export function useCards() {
@@ -18,7 +18,7 @@ export function useCards() {
     rating: 0,
     stock: 0,
     thumbnail: '',
-  })
+  });
 
   async function fetchData() {
     try {
@@ -31,15 +31,13 @@ export function useCards() {
     } catch (e: unknown) {
       setIsLoading(false);
       const error = e as Error;
-      setError(error.message)
-
+      setError(error.message);
     }
-
   }
 
   useEffect(() => {
     fetchData();
-  }, [])
+  }, []);
 
   return {
     cards,
@@ -51,6 +49,6 @@ export function useCards() {
     setCards,
     setError,
     setIsOpen,
-    setProductDetails
-  }
+    setProductDetails,
+  };
 }

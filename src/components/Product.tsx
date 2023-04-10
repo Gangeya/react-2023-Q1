@@ -1,5 +1,4 @@
 import React from 'react';
-import { set } from 'react-hook-form';
 import { TProduct } from '../types';
 
 interface IProduct {
@@ -9,15 +8,13 @@ interface IProduct {
 }
 
 export const Product = ({ data, isOpen, setDetails }: IProduct) => {
-
   return (
     <div
       className="product"
       onClick={() => {
         isOpen(true);
         setDetails(data);
-      }
-      }
+      }}
       role="presentation"
     >
       <p>{data.title}</p>
@@ -28,4 +25,4 @@ export const Product = ({ data, isOpen, setDetails }: IProduct) => {
       <p>Count: {data.stock}</p>
     </div>
   );
-}
+};

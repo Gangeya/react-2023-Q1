@@ -18,13 +18,13 @@ export const ModalProduct = ({ product, title, onClose }: IProduct) => {
         <p>Price: {product.price}</p>
         <p>Rating: {product.rating}</p>
         <p className="modal-images">
-          {product.images.map((image) => (<img key={uuid()} src={image} alt={product.title} />))}
+          {product.images.map((image) => (
+            <img key={uuid()} src={image} alt={product.title} />
+          ))}
         </p>
         <p>{product.description}</p>
-        <button
-          onClick={() => onClose()}
-        >Close</button>
+        <button onClick={() => onClose()}>Close</button>
       </div>
     </div>
   );
-}
+};

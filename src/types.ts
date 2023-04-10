@@ -14,7 +14,6 @@ export type TProduct = {
   thumbnail: string;
 };
 
-
 export interface IFormValues {
   'Your Name': string;
   'Day Of Birth': string;
@@ -41,5 +40,5 @@ export type TCard = {
 export type TInputProps = {
   label: Path<IFormValues>;
   register: UseFormRegister<IFormValues>;
-  required: boolean;
+  required?: boolean;
 };
