@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useCards } from '../components/useCards';
 import { TProduct } from 'types';
+import { useAppSelector, useAppDispatch } from '../hooks/redux';
+import { TAppDispatch } from '../store';
+import { searchText } from '../store/searchSlice';
 
 interface ISearchProps {
   setCards: (arr: TProduct[]) => void;
@@ -10,20 +14,22 @@ export const Search = ({ setCards }: ISearchProps) => {
   const refSearch = useRef(inputSearchValue);
   const { setError, setIsLoading } = useCards();
 
-  useEffect(() => {
-    refSearch.current = inputSearchValue;
-    alert('Привет, Уважаемый проверяющий!) Прошу понять и простить - была Пасха!) Дай парудней допилить таск)')
-  }, [inputSearchValue]);
+  // useEffect(() => {
+  const searchVal = useAppSelector(state => state.search.searchValue);
+  const dispatch: TAppDispatch = useAppDispatch();
+  refSearch.current = searchVal;
+  //@ts-checkalert('Привет, Уважаемый проверяющий!) Прошу понять и простить - была Пасха!) Дай парудней допилить таск)')
+  //}, []);
 
-  useEffect(() => {
-    const key = localStorage.getItem('key-inputSearchValue');
-    if (key) {
-      setInputSearchValue(key);
-    }
-    return () => {
-      localStorage.setItem('key-inputSearchValue', refSearch.current);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const key = localStorage.getItem('key-inputSearchValue');
+  //   if (key) {
+  //     setInputSearchValue(key);
+  //   }
+  //   return () => {
+  //     localStorage.setItem('key-inputSearchValue', refSearch.current);
+  //   };
+  // }, []);
 
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -31,6 +37,7 @@ export const Search = ({ setCards }: ISearchProps) => {
 
   function changeSearch(e: React.ChangeEvent<HTMLInputElement>) {
     setInputSearchValue(e.target.value);
+    dispatch(searchText(e.target.value));
   }
 
 
@@ -58,7 +65,7 @@ export const Search = ({ setCards }: ISearchProps) => {
             type="search"
             placeholder="Search..."
             name="search"
-            value={inputSearchValue}
+            value={searchVal}
             id="search"
             onChange={(e) => changeSearch(e)}
           />
