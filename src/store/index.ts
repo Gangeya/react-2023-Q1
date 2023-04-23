@@ -6,8 +6,8 @@ export const store = configureStore({
   reducer: {
     search: searchReducer,
     form: formReducer,
-  }
+  },
 });
 
-export type TRootState = ReturnType<typeof store.getState>
+export type TRootState = ReturnType<typeof store.getState>;
 export type TAppDispatch = typeof store.dispatch;

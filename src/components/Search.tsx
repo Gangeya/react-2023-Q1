@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useRef, useState } from 'react';
+
 import { useCards } from '../components/useCards';
 import { TProduct } from 'types';
 import { useAppSelector, useAppDispatch } from '../hooks/redux';
@@ -14,22 +14,9 @@ export const Search = ({ setCards }: ISearchProps) => {
   const refSearch = useRef(inputSearchValue);
   const { setError, setIsLoading } = useCards();
 
-  // useEffect(() => {
-  const searchVal = useAppSelector(state => state.search.searchValue);
+  const searchVal = useAppSelector((state) => state.search.searchValue);
   const dispatch: TAppDispatch = useAppDispatch();
   refSearch.current = searchVal;
-  //@ts-checkalert('Привет, Уважаемый проверяющий!) Прошу понять и простить - была Пасха!) Дай парудней допилить таск)')
-  //}, []);
-
-  // useEffect(() => {
-  //   const key = localStorage.getItem('key-inputSearchValue');
-  //   if (key) {
-  //     setInputSearchValue(key);
-  //   }
-  //   return () => {
-  //     localStorage.setItem('key-inputSearchValue', refSearch.current);
-  //   };
-  // }, []);
 
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -39,7 +26,6 @@ export const Search = ({ setCards }: ISearchProps) => {
     setInputSearchValue(e.target.value);
     dispatch(searchText(e.target.value));
   }
-
 
   async function searchHandler() {
     try {

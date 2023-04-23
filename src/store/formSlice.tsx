@@ -10,9 +10,9 @@ const formSlice = createSlice({
     addCards(state, action) {
       console.log(state);
       console.log(action);
-      state.formCards.push(action.payload)
-    }
-  }
+      state.formCards.push(action.payload);
+    },
+  },
 });
 
 export const { addCards } = formSlice.actions;

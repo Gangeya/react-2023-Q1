@@ -10,8 +10,8 @@ const searchSlice = createSlice({
       console.log(state);
       console.log(action);
       state.searchValue = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { searchText } = searchSlice.actions;
